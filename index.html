@@ -3,190 +3,132 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeria - Portfólio Fotográfico</title>
+  <title>Portfólio Ambiental - Fatec Itu</title>
   
-  <link rel="stylesheet" href="css/galeria.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="lanterna-overlay"></div>
 
-  <main class="gallery-container">
+  <header class="menu-topo">
+    <div class="logo">🌿</div>
+    <nav>
+      <a href="#" class="active">Home</a>
+      <a href="galeria.html">Galeria</a>
+      <a href="sobre.html">Sobre</a>
+    </nav>
+  </header>
+
+  <section class="banner-principal" id="hero">
+
+    <div class="container-video">
+      <video autoplay loop muted playsinline class="video-fundo">
+        <source src="video/floresta4.mp4" type="video/mp4">
+      </video>
+      <div class="camada-escura"></div>
+    </div>
+
+    <div class="caixa-texto">
+      <h1 class="titulo-principal">Meio <em>Ambiente</em></h1>
+      <p class="subtitulo">Dia Mundial &middot; Fatec Itu</p>
+      <span class="etiqueta-data">05 de Junho</span>
+    </div>
+
+<!-- <a href="galeria.html" class="link-rolar">
+      <div class="botao-rolar">
+        <span>Acessar Galeria</span>
+        <div class="seta-rolar"></div>
+      </div>
+    </a>
+-->
+  </section>
+
+  <main class="conteudo-principal">
     
-    <div class="photo-card" data-category="flora">
-      <img src="img/foto1.jpg" alt="Descrição da foto 1" />
-      <div class="expand-icon" title="Ver foto em tela cheia">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+    <article class="bloco-alternado animar-scroll">
+      <div class="imagem-bloco" style="background-image: url('img/foto1.jpg');"></div>
+      <div class="texto-bloco borda-esquerda">
+        <h3>Titulo Titulo</h3>
+        <p>Nunc commodo accumsan eget id nisi eu nisl volutpat magna. Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisl praesent adipiscing. Integer mi sed nisl arcu aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
       </div>
-      <div class="photo-overlay">
-        <h3 class="scientific-name">Espécie 1</h3>
-        <p>Descrição detalhada da foto 1.</p>
-      </div>
-    </div>
+    </article>
 
-    <div class="photo-card" data-category="fauna">
-      <img src="img/foto2.jpg" alt="Descrição da foto 2" />
-      <div class="expand-icon" title="Ver foto em tela cheia">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+    <article class="bloco-alternado reverso animar-scroll">
+      <div class="imagem-bloco" style="background-image: url('img/foto2.jpg');"></div>
+      
+      <div class="texto-bloco borda-direita">
+        <h3>Titulo Titulo</h3>
+        <p>Nunc commodo accumsan eget id nisi eu nisl volutpat magna. Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisl praesent adipiscing. Integer mi sed nisl arcu aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
       </div>
-      <div class="photo-overlay">
-        <h3 class="scientific-name">Espécie 2</h3>
-        <p>Descrição detalhada da foto 2.</p>
-      </div>
-    </div>
+    </article>
 
-    <div class="photo-card" data-category="flora">
-      <img src="img/foto3.jpg" alt="Descrição da foto 3" />
-      <div class="expand-icon" title="Ver foto em tela cheia">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+    <article class="bloco-alternado animar-scroll">
+      <div class="imagem-bloco" style="background-image: url('img/foto3.jpg');"></div>
+      <div class="texto-bloco borda-esquerda">
+        <h3>Titulo Titulo</h3>
+        <p>Nunc commodo accumsan eget id nisi eu nisl volutpat magna. Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisl praesent adipiscing. Integer mi sed nisl arcu aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
       </div>
-      <div class="photo-overlay">
-        <h3 class="scientific-name">Espécie 3</h3>
-        <p>Descrição detalhada da foto 3.</p>
-      </div>
-    </div>
-
-    <div class="photo-card" data-category="fauna">
-      <img src="img/foto4.jpg" alt="Descrição da foto 4" />
-      <div class="expand-icon" title="Ver foto em tela cheia">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-      </div>
-      <div class="photo-overlay">
-        <h3 class="scientific-name">Espécie 4</h3>
-        <p>Descrição detalhada da foto 4.</p>
-      </div>
-    </div>
-
-    <div class="photo-card" data-category="flora">
-      <img src="img/foto5.jpg" alt="Descrição da foto 5" />
-      <div class="expand-icon" title="Ver foto em tela cheia">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-      </div>
-      <div class="photo-overlay">
-        <h3 class="scientific-name">Espécie 5</h3>
-        <p>Descrição detalhada da foto 5.</p>
-      </div>
-    </div>
-
-    <div class="photo-card" data-category="fauna">
-      <img src="img/foto6.jpg" alt="Descrição da foto 6" />
-      <div class="expand-icon" title="Ver foto em tela cheia">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-      </div>
-      <div class="photo-overlay">
-        <h3 class="scientific-name">Espécie 6</h3>
-        <p>Descrição detalhada da foto 6.</p>
-      </div>
-    </div>
-
-    <div class="photo-card" data-category="flora">
-      <img src="img/foto7.jpg" alt="Descrição da foto 7" />
-      <div class="expand-icon" title="Ver foto em tela cheia">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-      </div>
-      <div class="photo-overlay">
-        <h3 class="scientific-name">Espécie 7</h3>
-        <p>Descrição detalhada da foto 7.</p>
-      </div>
-    </div>
-
-    <div class="photo-card" data-category="fauna">
-      <img src="img/teste.jpg" alt="Descrição da foto teste" />
-      <div class="expand-icon" title="Ver foto em tela cheia">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-      </div>
-      <div class="photo-overlay">
-        <h3 class="scientific-name">Espécie Teste</h3>
-        <p>Descrição detalhada da foto teste.</p>
-      </div>
-    </div>
-
-    <div class="photo-card" data-category="flora">
-      <img src="img/teste.jpg" alt="Ixora-chinesa" />
-      <div class="expand-icon" title="Ver foto em tela cheia">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-      </div>
-      <div class="photo-overlay">
-        <h3 class="scientific-name">Ixora-chinesa</h3>
-        <p>É um arbusto ornamental muito utilizado em paisagismo devido à sua floração densa e as flores se agrupam em grandes buquês esféricos, podendo ser encontradas nas cores vermelha, amarela ou laranja. É uma planta da família Rubiaceae, nativa de regiões tropicais.</p>
-        
-        <ul class="tech-specs" style="display: none;">
-          <li><strong>Câmera:</strong> Apple iPhone 13 (HEIF)</li>
-          <li><strong>Lente:</strong> Grande-Angular — 26 mm ƒ1,6</li>
-          <li><strong>Resolução:</strong> 12 MP • 3024 x 4032 • 1,7 MB</li>
-          <li><strong>Perfil:</strong> CONTRASTE RICO</li>
-          <li><strong>Ajustes:</strong> ISO 50 | 26 mm | 0 ev | ƒ1,6 | 1/360 s</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="photo-card" data-category="flora">
-      <img src="img/teste2.jpg" alt="Descrição da foto teste 2" />
-      <div class="expand-icon" title="Ver foto em tela cheia">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-      </div>
-      <div class="photo-overlay">
-        <h3 class="scientific-name">Espécie Teste 2</h3>
-        <p>Descrição detalhada da foto teste 2.</p>
-      </div>
-    </div>
+    </article>
 
   </main>
-  
-  <div id="fullscreen-modal" class="modal">
-    <span class="close-fullscreen">&times;</span>
-    <img id="fullscreen-img" src="" alt="Foto em tela cheia">
-  </div>
 
-  <div id="photo-modal" class="modal">
-    <span class="close-modal">&times;</span>
-    <div class="modal-content">
-      <div class="modal-img-container">
-        <img id="modal-img" src="" alt="Foto expandida">
-        <div class="expand-icon-modal" title="Ver foto em tela cheia">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+  <section class="secao-galeria animar-scroll">
+    <div class="cabecalho-galeria">
+      <h2>GALERIA</h2>
+      <div class="linha-verde"></div>
+    </div>
+
+    <div class="bento-grid">
+      <a href="#" class="bento-card card-flores" style="background-image: url('img/teste.jpg');">
+        <div class="card-conteudo">
+          <div class="card-header">
+            <h4>Flores</h4>
+            <span class="btn-ver-mais">Ver mais</span>
+          </div>
+          <p>Nunc commodo accumsan eget id nisi eu nisl volutpat magna.</p>
         </div>
-      </div>
-      <div id="modal-info">
-        <h3 id="modal-title" class="scientific-name"></h3>
-        <p id="modal-desc"></p>
-        <div id="modal-tech-specs" class="exif-container"></div>
-      </div>
+      </a>
+
+      <a href="#" class="bento-card card-plantas" style="background-image: url('img/plantas.jpg');">
+        <div class="card-conteudo">
+          <div class="card-header">
+            <h4>Plantas</h4>
+            <span class="btn-ver-mais">Ver mais</span>
+          </div>
+          <p>Nunc commodo accumsan eget id nisi eu nisl volutpat magna.</p>
+        </div>
+      </a>
+
+      <a href="#" class="bento-card card-ceu" style="background-image: url('img/ceu.jpeg');">
+        <div class="card-conteudo">
+          <div class="card-header">
+            <h4>Céu</h4>
+            <span class="btn-ver-mais">Ver mais</span>
+          </div>
+          <p>Nunc commodo accumsan eget id nisi eu nisl volutpat magna.</p>
+        </div>
+      </a>
+
+      <a href="#" class="bento-card card-animais" style="background-image: url('img/animais.jpg');">
+        <div class="card-conteudo">
+          <div class="card-header">
+            <h4>Animais</h4>
+            <span class="btn-ver-mais">Ver mais</span>
+          </div>
+          <p>Nunc commodo accumsan eget id nisi eu nisl volutpat magna.</p>
+        </div>
+      </a>
     </div>
-  </div>
+  </section>
 
-  <button id="filter-btn" class="floating-btn" title="Filtrar Imagens">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
-    </svg>
-  </button>
-
-  <div id="filter-panel" class="filter-panel">
-    <div class="filter-header">
-      <h4>Filtrar por:</h4>
-      <span class="close-filter">&times;</span>
+  <footer class="rodape">
+    <div class="rodape-conteudo">
+      <div class="logo-rodape">🌿</div>
+      <p>&copy; 2026 Fatec Itu - Interação Humano-Computador. Todos os direitos reservados.</p>
     </div>
-    
-    <div class="filter-options">
-      <label class="filter-label">
-        <input type="checkbox" value="flora">
-        <span class="custom-checkbox"></span>
-        Flora
-      </label>
-      
-      <label class="filter-label">
-        <input type="checkbox" value="fauna">
-        <span class="custom-checkbox"></span>
-        Fauna
-      </label>
+  </footer>
 
-      <label class="filter-label">
-        <input type="checkbox" value="todos" checked>
-        <span class="custom-checkbox"></span>
-        Mostrar Todos
-      </label>
-    </div>
-  </div>
-
-  <script src="js/galeria.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

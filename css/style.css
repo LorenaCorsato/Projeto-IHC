@@ -1,0 +1,414 @@
+/* ==========================================================================
+   1. CONFIGURAÇÕES GERAIS E RESET
+   ========================================================================== */
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
+body {
+  background: #071510;
+  font-family: 'Lato', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. MENU SUPERIOR (MENU-TOPO)
+   ========================================================================== */
+.menu-topo {
+  display: flex;
+  align-items: center;
+  padding: 25px 40px;
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  right: 0;
+  z-index: 100; /* Garante que fique acima de TODAS as fotos */
+  transition: all 0.4s ease; /* Transição suave quando ganhar o fundo */
+}
+
+/* Nova classe que o JavaScript vai adicionar ao rolar a página */
+.menu-rolagem {
+  background-color: rgba(0, 0, 0, 0.98); /* Fundo verde super escuro */
+  padding: 15px 40px; /* A barra encolhe levemente para não ocupar muito espaço */
+  box-shadow: 0 1px 20px rgba(40, 40, 40, 0.6);
+  backdrop-filter: blur(10px); /* Efeito de vidro moderno */
+}
+
+.logo { 
+  font-size: 1.5rem; 
+  margin-right: 30px; 
+}
+
+.menu-topo nav a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  margin-right: 30px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.menu-topo nav a:hover, 
+.menu-topo nav a.active { 
+  color: #7ddb6a; 
+}
+
+/* ==========================================================================
+   3. BANNER PRINCIPAL (VÍDEO E MÁSCARA)
+   ========================================================================== */
+.banner-principal {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 420px;
+  overflow: hidden; /* Corta sobras do vídeo para não criar barras de rolagem */
+}
+
+.container-video {
+  position: absolute;
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
+  z-index: 1;
+}
+
+.video-fundo {
+  width: 100%; 
+  height: 100%;
+  object-fit: cover; /* Faz o vídeo preencher a tela sem distorcer as proporções */
+  object-position: center center;
+  pointer-events: none; 
+}
+
+.camada-escura {
+  position: absolute;
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65); /* Controla o escurecimento do vídeo */
+  z-index: 2;
+}
+
+/* ==========================================================================
+   4. TEXTOS (CAIXA-TEXTO)
+   ========================================================================== */
+.caixa-texto {
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -55%); /* Centralização perfeita na tela */
+  text-align: center;
+  pointer-events: none;
+  z-index: 10;
+  animation: surgimentoSuave 2s ease 0.5s both;
+}
+
+@keyframes surgimentoSuave {
+  from { opacity: 0; transform: translate(-50%, -42%); }
+  to { opacity: 1; transform: translate(-50%, -55%); }
+}
+
+.titulo-principal {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 6vw, 4.5rem); /* Fonte responsiva de acordo com a tela */
+  font-weight: 700;
+  color: #e8f5e2;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.8);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.titulo-principal em { 
+  color: #7ddb6a; 
+  font-style: italic; 
+}
+
+.subtitulo {
+  font-weight: 400;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  color: rgba(200,235,200,0.85);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.etiqueta-data {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 10px 25px;
+  border: 1px solid rgba(125,219,106,0.5);
+  border-radius: 24px;
+  font-size: 0.9rem;
+  color: rgba(180,255,160,0.9);
+  letter-spacing: .12em;
+  background: rgba(0,0,0,0.4);
+}
+
+/* ==========================================================================
+   5. BOTÃO DE ROLAGEM (BOTAO-ROLAR)
+   ========================================================================== */
+.link-rolar {
+  text-decoration: none;
+}
+
+.botao-rolar {
+  position: absolute;
+  bottom: 30px; 
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+.botao-rolar span {
+  font-size: 0.75rem;
+  color: #7ddb6a;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+.seta-rolar {
+  width: 22px; 
+  height: 22px;
+  border-right: 2px solid #7ddb6a;
+  border-bottom: 2px solid #38752B;
+  transform: rotate(45deg);
+  animation: puloElemento 2s ease-in-out infinite;
+}
+
+@keyframes puloElemento {
+  0%, 100% { transform: rotate(45deg) translateY(0); }
+  50% { transform: rotate(45deg) translateY(8px); }
+}
+
+/* ==========================================================================
+   6. BLOCOS ALTERNADOS (SOBRE O PROJETO)
+   ========================================================================== */
+.conteudo-principal {
+  background-color: #0c0c0c; 
+  padding: 0;
+}
+
+.bloco-alternado {
+  display: flex;
+  height: 100vh; /* A MÁGICA AQUI: Cada bloco agora tem exatos 100% da altura da tela */
+  width: 100%;
+}
+
+.bloco-alternado.reverso {
+  flex-direction: row-reverse;
+}
+
+.imagem-bloco {
+  flex: 1; /* Ocupa 50% da largura */
+  background-size: cover;
+  background-position: center;
+  height: 100%; /* A foto estica até o fim da tela */
+}
+
+.texto-bloco {
+  flex: 1; /* Ocupa os outros 50% da largura */
+  background-color: #050505; 
+  padding: 10%; /* Aumentei o respiro interno para ficar mais elegante em tela cheia */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.texto-bloco h3 {
+  font-family: 'Playfair Display', serif;
+  color: #ffffff;
+  font-size: 3rem; /* Título maior para preencher melhor a tela cheia */
+  margin-bottom: 25px;
+}
+
+.texto-bloco p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.1rem; /* Texto levemente maior */
+  line-height: 1.9;
+}
+
+/* Detalhes da Linha Verde */
+.borda-esquerda { border-left: 8px solid #38752B; }
+.borda-direita { border-right: 8px solid #38752B; }
+
+/* Ajuste Responsivo para os slides no celular */
+@media (max-width: 850px) {
+  .bloco-alternado, .bloco-alternado.reverso {
+    flex-direction: column;
+    height: auto; /* Tira o limite de 100vh no celular para não espremer */
+    min-height: 100vh;
+  }
+  .imagem-bloco {
+    min-height: 50vh; /* A foto divide a tela com o texto */
+  }
+}
+/* ==========================================================================
+   7. GALERIA BENTO BOX
+   ========================================================================== */
+.secao-galeria {
+  background-color: #0c0c0c;
+  padding: 80px 5% 100px;
+}
+
+.cabecalho-galeria {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  gap: 20px;
+}
+
+.cabecalho-galeria h2 {
+  font-family: 'Playfair Display', serif;
+  color: #ffffff;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+}
+
+.linha-verde {
+  height: 8px;
+  background-color: #38752B; /* Tom de verde mais escuro da barra lateral */
+  border-radius: 4px;
+  flex-grow: 1; /* Faz a linha preencher o resto do espaço */
+  max-width: 6000px;
+}
+
+/* O Grid CSS Mágico */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 220px);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card-flores { grid-column: 1; grid-row: 1 / span 2; }
+.card-plantas { grid-column: 2 / span 3; grid-row: 1; }
+.card-ceu { grid-column: 2; grid-row: 2; }
+.card-animais { grid-column: 3; grid-row: 2; }
+
+/* Estilo Individual dos Cartões */
+.bento-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bento-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 100%);
+  transition: background 0.3s ease;
+}
+
+.bento-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(125, 219, 106, 0.2);
+}
+
+.bento-card:hover::before {
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 100%);
+}
+
+.card-conteudo {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  width: 100%;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 8px;
+}
+
+.card-conteudo h4 {
+  font-family: 'Playfair Display', serif;
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+.btn-ver-mais {
+  background-color: #38752B;
+  color: white;
+  font-size: 0.65rem;
+  font-weight: bold;
+  padding: 4px 12px;
+  border-radius: 12px;
+  text-transform: uppercase;
+}
+
+.card-conteudo p {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   8. RODAPÉ E ANIMAÇÕES GERAIS
+   ========================================================================== */
+.rodape {
+  background-color: #38752B; /* A barra verde final */
+  padding: 20px;
+  text-align: center;
+}
+
+.rodape-conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  color: white;
+  font-size: 0.85rem;
+}
+
+/* Animações de Scroll (Classes para o JS ativar) */
+.animar-scroll {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animar-scroll.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVIDADE PARA CELULAR */
+@media (max-width: 850px) {
+  .bloco-alternado, .bloco-alternado.reverso {
+    flex-direction: column;
+  }
+  .borda-esquerda, .borda-direita {
+    border-left: none;
+    border-right: none;
+    border-top: 5px solid #38752B;
+  }
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .card-flores, .card-plantas, .card-ceu, .card-animais {
+    grid-column: 1;
+    grid-row: auto;
+    height: 250px;
+  }
+}
