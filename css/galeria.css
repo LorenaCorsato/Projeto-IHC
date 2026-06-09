@@ -1,29 +1,58 @@
-/* Configuração Geral do Corpo da Página */
 body {
-  background-color: #000000; 
+  background-color: #071510; 
   transition: background-color 0.3s ease;
   margin: 0;
   padding: 0;
-  /* O 'overflow: hidden;' foi removido para permitir o scroll na página */
 }
 
-/* Container principal - Efeito Mural/Mosaico (Masonry) */
+.menu-topo {
+  display: flex;
+  align-items: center;
+  padding: 15px 40px; 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  right: 0;
+  z-index: 100;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: 100px;
+  background-color: rgba(0, 0, 0, 0.98); 
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px); 
+}
+
+.logo { 
+  font-size: 1.5rem; 
+  margin-right: 30px; 
+}
+
+.menu-topo nav a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  margin-right: 30px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.menu-topo nav a:hover, 
+.menu-topo nav a.active { 
+  color: #7ddb6a; 
+}
+
 .gallery-container {
-  /* Define o número de colunas do mosaico */
   column-count: 3; 
-  /* Define o espaço (gap) exato entre as colunas (igual ao do telemóvel) */
   column-gap: 20px; 
   
   padding: 20px; 
   max-width: 1300px; 
   margin: 0 auto; 
-  margin-top: 20px;
-  /* Garante que os cards ficam à frente da luz de fundo */
+  margin-top: 70px;
   position: relative;
   z-index: 1; 
 }
 
-/* Responsividade: reduz o número de colunas em ecrãs mais pequenos */
 @media (max-width: 900px) {
   .gallery-container { column-count: 2; }
 }
@@ -31,7 +60,6 @@ body {
   .gallery-container { column-count: 2; }
 }
 
-/* Container do Card */
 .photo-card {
   position: relative;
   border-radius: 12px; 
@@ -42,38 +70,34 @@ body {
   margin-bottom: 24px; 
   break-inside: avoid; 
   
-  /* NOVAS LINHAS PARA A ANIMAÇÃO DE ENTRADA: */
-  opacity: 0; /* O card nasce invisível */
+  opacity: 0; 
   animation: surgirCascata 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; 
 }
 
 @keyframes surgirCascata {
   0% {
     opacity: 0;
-    transform: translateY(50px); /* Começa 50px mais para baixo */
+    transform: translateY(50px); 
   }
   100% {
     opacity: 1;
-    transform: translateY(0); /* Sobe para a posição original */
+    transform: translateY(0); 
   }
 }
 
-/* Estilização da Imagem */
 .photo-card img {
   width: 100%;  
-  height: auto; /* Permite que fotografias verticais fiquem altas e horizontais fiquem baixas */
-  display: block; /* Remove o pequeno espaço invisível que os navegadores deixam debaixo das imagens */
+  height: auto; 
+  display: block;  
   transition: transform 0.4s ease, filter 0.4s ease;
   filter: brightness(0.8); 
 }
 
-/* Efeito na Imagem ao passar o rato */
 .photo-card:hover img {
   transform: scale(1.05);
   filter: brightness(1); 
 }
 
-/* Camada de texto oculta (Overlay) */
 .photo-overlay {
   position: absolute;
   bottom: 0;
@@ -81,7 +105,7 @@ body {
   width: 100%; 
   padding: 20px;
   box-sizing: border-box; 
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9)); 
+  background: linear-gradient(transparent, rgba(0, 0.9, 0.9, 0.9)); 
   color: #f5f5f5;
   transform: translateY(100%); 
   transition: transform 0.3s ease;
@@ -93,11 +117,12 @@ body {
 
 .scientific-name {
   font-style: italic;
-  color: #a7f3d0; 
+  color: #7ddb6a; 
   margin: 5px 0; 
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.95), 
+              -1px -1px 4px rgba(0, 0, 0, 0.8);
 }
 
-/* Efeito de Lanterna / Ambilight (Mantido) */
 .lanterna-overlay {
   position: fixed;
   top: 0;
@@ -110,11 +135,7 @@ body {
   mix-blend-mode: screen; 
   z-index: 0; 
 }
-/* =========================================
-   ESTILOS DO POP-UP (MODAL) COM TRANSIÇÕES
-   ========================================= */
 
-/* Fundo escuro do Modal - Modificado para permitir animação */
 .modal {
   display: flex; 
   position: fixed;
@@ -146,7 +167,7 @@ body {
 
 /* Caixa principal - TAMANHO PADRONIZADO IGUAL PARA TODOS */
 .modal-content {
-  background-color: #000000;
+  background-color: #071510;
   border-radius: 14px;  
   width: 100%;
   max-width: 950px; /* Largura máxima idêntica */
@@ -241,7 +262,7 @@ body {
 /* Área de texto dos Dados Técnicos */
 #modal-info {
   padding: 35px;
-  background-color: #000000;
+  background-color: #071510;
   color: #f5f5f5;
   width: 100%;
   height: 55%; /* Divisão no mobile */
@@ -277,7 +298,7 @@ body {
 }
 
 .close-modal:hover {
-  color: #a7f3d0;
+  color: #7ddb6a;
   transform: scale(1.1);
 }
 
@@ -585,12 +606,11 @@ body {
   background: rgba(255, 255, 255, 0.05); /* Fundo translúcido para cada item */
   padding: 10px 14px;
   border-radius: 8px;
-  font-family: monospace; /* Fonte com estilo de código/dados */
-}
+ font-family: 'Lato', sans-serif}
 
 .exif-container li strong {
-  color: #a7f3d0; /* Usa a cor de destaque da sua galeria */
+  color: #7ddb6a; /* Usa a cor de destaque da sua galeria */
   font-weight: normal;
-  font-family: sans-serif;
-  margin-right: 6px;
+  font-family: 'Lato', sans-serif;
+   margin-right: 6px;
 }

@@ -207,7 +207,7 @@ body {
 }
 
 .imagem-bloco {
-  flex: 1; /* Ocupa 50% da largura */
+  flex: 1.5; /* Ocupa 50% da largura */
   background-size: cover;
   background-position: center;
   height: 100%; /* A foto estica até o fim da tela */

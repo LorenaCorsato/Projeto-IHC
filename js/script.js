@@ -1,8 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ==========================================
-  // 1. ANIMAÇÃO DE SCROLL (IntersectionObserver)
-  // ==========================================
   const elementosAnimados = document.querySelectorAll('.animar-scroll');
 
   const observador = new IntersectionObserver((entradas) => {
@@ -20,9 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // ==========================================
-  // 2. MUDANÇA DE COR DO MENU NO SCROLL
-  // ==========================================
+
   const menuTopo = document.querySelector('.menu-topo');
 
   window.addEventListener('scroll', () => {
@@ -34,24 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // ==========================================
-  // 3. FILTRO DA GALERIA ADAPTADO PARA LIVE SERVER
-  // ==========================================
-  
-  // Captura cliques nos cards da Bento Grid se estiver na Home (index.html)
+
   const linksFiltro = document.querySelectorAll(".bento-grid a.bento-card");
 
   linksFiltro.forEach(link => {
     link.addEventListener("click", function() {
       const filtroSelecionado = this.getAttribute("data-filter");
       if (filtroSelecionado) {
-        // Salva a escolha do usuário no navegador antes de mudar de página
         localStorage.setItem("filtroGaleria", filtroSelecionado.trim().toLowerCase());
       }
     });
   });
 
-  // Limpa o filtro se o usuário clicar nos links normais do menu topo (evita travar o filtro para sempre)
   const linksMenuPadrao = document.querySelectorAll(".menu-topo nav a");
   linksMenuPadrao.forEach(link => {
     link.addEventListener("click", () => {
@@ -59,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Aplica o filtro na página da Galeria (galeria.html)
   const cardsFotos = document.querySelectorAll(".photo-card");
   
   if (cardsFotos.length > 0) {
@@ -72,11 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (filtroSalvo) {
-      // Executa a filtragem das fotos
       cardsFotos.forEach(card => {
         const categoriaCard = card.getAttribute("data-category") ? card.getAttribute("data-category").trim().toLowerCase() : "";
 
-        // Comparação flexível para aceitar variações textuais de suas imagens
         const corresponde = 
           categoriaCard === filtroSalvo || 
           (filtroSalvo === "flor" && (categoriaCard === "flora" || categoriaCard === "flores" || categoriaCard === "planta")) ||
@@ -90,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
       
-      // NOTA: Não removemos o 'filtroGaleria' aqui para evitar o bug do refresh do Live Server.
     }
   }
 
