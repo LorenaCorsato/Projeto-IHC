@@ -15,6 +15,126 @@ const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
 const lanternaOverlay = document.querySelector('.lanterna-overlay');
 const imagensDaGaleria = document.querySelectorAll('.photo-card img');
+const cardsDaGaleria = document.querySelectorAll('.photo-card');
+
+const paramsFiltro = new URLSearchParams(window.location.search);
+const filtroDaURL = paramsFiltro.get('filtro');
+const filtroSalvo = (filtroDaURL || localStorage.getItem('filtroGaleria') || '').trim().toLowerCase();
+
+if (filtroDaURL) {
+  localStorage.setItem('filtroGaleria', filtroSalvo);
+}
+
+if (filtroSalvo) {
+  cardsDaGaleria.forEach((card) => {
+    const categoriaCard = (card.getAttribute('data-category') || '').trim().toLowerCase();
+    const corresponde =
+      categoriaCard === filtroSalvo ||
+      (filtroSalvo === 'flor' && categoriaCard === 'flor') ||
+      (filtroSalvo === 'planta' && categoriaCard === 'planta') ||
+      (filtroSalvo === 'animal' && categoriaCard === 'animal') ||
+      (filtroSalvo === 'ceu' && categoriaCard === 'ceu');
+
+    card.style.display = corresponde ? '' : 'none';
+  });
+}
+
+const filterOptions = Array.from(document.querySelectorAll('.filter-options input[type="checkbox"]'));
+
+function getCheckboxByValue(value) {
+  return filterOptions.find((checkbox) => checkbox.value === value);
+}
+
+function categoriaCorrespondeFiltro(categoriaCard, filtro) {
+  if (filtro === 'animais') {
+    return categoriaCard === 'animal';
+  }
+
+  if (filtro === 'plantas') {
+    return categoriaCard === 'planta';
+  }
+
+  if (filtro === 'flores') {
+    return categoriaCard === 'flor';
+  }
+
+  if (filtro === 'ceu') {
+    return categoriaCard === 'ceu';
+  }
+
+  return false;
+}
+
+function aplicarFiltroPainel() {
+  const todosCheckbox = getCheckboxByValue('todos');
+  const filtrosAtivos = filterOptions
+    .filter((checkbox) => checkbox.checked && checkbox.value !== 'todos')
+    .map((checkbox) => checkbox.value);
+
+  if (!todosCheckbox) {
+    return;
+  }
+
+  if (todosCheckbox.checked || filtrosAtivos.length === 0) {
+    cardsDaGaleria.forEach((card) => {
+      card.style.display = '';
+    });
+    todosCheckbox.checked = true;
+    return;
+  }
+
+  cardsDaGaleria.forEach((card) => {
+    const categoriaCard = (card.getAttribute('data-category') || '').trim().toLowerCase();
+    const corresponde = filtrosAtivos.some((filtro) => categoriaCorrespondeFiltro(categoriaCard, filtro));
+
+    card.style.display = corresponde ? '' : 'none';
+  });
+}
+
+filterOptions.forEach((checkbox) => {
+  checkbox.addEventListener('change', () => {
+    const todosCheckbox = getCheckboxByValue('todos');
+
+    if (!todosCheckbox) {
+      aplicarFiltroPainel();
+      return;
+    }
+
+    if (checkbox.value === 'todos' && checkbox.checked) {
+      filterOptions.forEach((item) => {
+        if (item.value !== 'todos') {
+          item.checked = false;
+        }
+      });
+    }
+
+    if (checkbox.value !== 'todos' && checkbox.checked) {
+      todosCheckbox.checked = false;
+    }
+
+    if (checkbox.value !== 'todos' && !filterOptions.some((item) => item.value !== 'todos' && item.checked)) {
+      todosCheckbox.checked = true;
+    }
+
+    aplicarFiltroPainel();
+  });
+});
+
+if (filtroSalvo) {
+  const checkboxSelecionado = getCheckboxByValue(
+    filtroSalvo === 'animal' ? 'animais' :
+    filtroSalvo === 'planta' ? 'plantas' :
+    filtroSalvo === 'flor' ? 'flores' :
+    filtroSalvo === 'ceu' ? 'ceu' :
+    ''
+  );
+
+  const todosCheckbox = getCheckboxByValue('todos');
+  if (checkboxSelecionado && todosCheckbox) {
+    todosCheckbox.checked = false;
+    checkboxSelecionado.checked = true;
+  }
+}
 
 let imagemAtiva = null;
 let corDominante = '255, 255, 255'; // Variável para guardar a cor fixa da foto
