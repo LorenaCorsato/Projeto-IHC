@@ -16,8 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     observador.observe(elemento);
   });
 
-
-
   const menuTopo = document.querySelector('.menu-topo');
 
   window.addEventListener('scroll', () => {
@@ -27,8 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
       menuTopo.classList.remove('menu-rolagem');
     }
   });
-
-
 
   const linksFiltro = document.querySelectorAll(".bento-grid a.bento-card");
 
@@ -75,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
           card.style.setProperty("display", "none", "important");
         }
       });
-      
     }
   }
 

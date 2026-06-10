@@ -1,168 +1,354 @@
-
-.menu-sobre {
-  background-color: #000000; 
-  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(10px); 
-  padding: 15px 40px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Área principal do conteúdo */
-.container-sobre {
-  max-width: 900px;
-  margin: 140px auto 100px; /* Margem superior empurra o conteúdo para baixo do menu fixo */
-  padding: 0 30px;
-  color: #f5f5f5;
+body {
+  background: #071510;
   font-family: 'Lato', sans-serif;
+  overflow-x: hidden;
 }
 
-/* Título e Linha Decorativa */
-.cabecalho-sobre {
-  text-align: center;
-  margin-bottom: 60px;
+.menu-topo {
+  display: flex;
+  align-items: center;
+  padding: 25px 40px;
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  right: 0;
+  z-index: 100;
+  transition: all 0.4s ease;
 }
 
-.cabecalho-sobre .titulo-principal {
-  font-size: clamp(2.5rem, 5vw, 3.8rem);
+.menu-rolagem {
+  background-color: rgba(0, 0, 0, 0.98);
+  padding: 15px 40px;
+  box-shadow: 0 1px 20px rgba(40, 40, 40, 0.6);
+  backdrop-filter: blur(10px);
 }
 
-.linha-verde-central {
-  height: 6px;
-  width: 120px;
-  background-color: #38752B; /* O mesmo tom de verde do botão da Home */
-  margin: 20px auto 0;
-  border-radius: 4px;
+.logo { 
+  font-size: 1.5rem; 
+  margin-right: 30px; 
 }
 
-/* Textos Explicativos */
-.texto-sobre h2, .equipe-sobre h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.2rem;
-  color: #7ddb6a; /* Verde claro brilhante */
-  margin-bottom: 20px;
-  margin-top: 50px;
-}
-
-.texto-sobre p, .equipe-sobre p {
-  font-size: 1.15rem;
-  line-height: 1.8;
+.menu-topo nav a {
   color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  margin-right: 30px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.menu-topo nav a:hover, 
+.menu-topo nav a.active { 
+  color: #7ddb6a; 
+}
+
+.banner-principal {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 420px;
+  overflow: hidden;
+}
+
+.container-video {
+  position: absolute;
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
+  z-index: 1;
+}
+
+.video-fundo {
+  width: 100%; 
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  pointer-events: none; 
+}
+
+.camada-escura {
+  position: absolute;
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 2;
+}
+
+.caixa-texto {
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -55%);
+  text-align: center;
+  pointer-events: none;
+  z-index: 10;
+  animation: surgimentoSuave 2s ease 0.5s both;
+}
+
+@keyframes surgimentoSuave {
+  from { opacity: 0; transform: translate(-50%, -42%); }
+  to { opacity: 1; transform: translate(-50%, -55%); }
+}
+
+.titulo-principal {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 700;
+  color: #e8f5e2;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.8);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.titulo-principal em { 
+  color: #7ddb6a; 
+  font-style: italic; 
+}
+
+.subtitulo {
+  font-weight: 400;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  color: rgba(200,235,200,0.85);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.etiqueta-data {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 10px 25px;
+  border: 1px solid rgba(125,219,106,0.5);
+  border-radius: 24px;
+  font-size: 0.9rem;
+  color: rgba(180,255,160,0.9);
+  letter-spacing: .12em;
+  background: rgba(0,0,0,0.4);
+}
+
+.conteudo-principal {
+  background-color: #071510; 
+  padding: 0;
+}
+
+.bloco-alternado {
+  display: flex;
+  height: 100vh; 
+  width: 100%;
+  position: relative;
+}
+
+.bloco-alternado.reverso {
+  flex-direction: row-reverse;
+}
+
+.bloco-alternado::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 100%;
+  background-color: #38752B;
+  z-index: 10;
+}
+
+.imagem-bloco {
+  width: 50%; 
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+  height: 100%; 
+}
+
+.texto-bloco {
+  width: 50%; 
+  flex-shrink: 0;
+  background-color: #050505; 
+  padding: 10%; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.texto-bloco h3 {
+  font-family: 'Playfair Display', serif;
+  color: #ffffff;
+  font-size: 3rem; 
   margin-bottom: 25px;
 }
 
-/* ==========================================================================
-   CARDS DOS MEMBROS DA EQUIPE
-   ========================================================================== */
-/* ==========================================================================
-   LISTA DA EQUIPE (ACORDEÃO EXPANSÍVEL)
-   ========================================================================== */
-.equipe-sobre {
-  margin-top: 80px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 50px;
+.texto-bloco p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.1rem; 
+  line-height: 1.9;
 }
 
-.lista-equipe {
+.borda-esquerda, .borda-direita { 
+  border: none; 
+}
+
+@media (max-width: 850px) {
+  .bloco-alternado, .bloco-alternado.reverso {
+    flex-direction: column;
+    height: auto; 
+    min-height: 100vh;
+  }
+  
+  .imagem-bloco, .texto-bloco {
+    width: 100%;
+  }
+
+  .imagem-bloco {
+    min-height: 50vh; 
+  }
+
+  .bloco-alternado::after {
+    display: none; 
+  }
+
+  .texto-bloco {
+    border-top: 5px solid #38752B; 
+  }
+}
+
+.secao-galeria {
+  background-color: #071510;
+  padding: 80px 5% 100px;
+}
+
+.cabecalho-galeria {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-top: 40px;
-}
-
-.membro-detalhes {
-  background-color: #121212;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  overflow: hidden;
-  transition: border-color 0.3s ease;
-}
-
-.membro-detalhes:hover {
-  border-color: rgba(125, 219, 106, 0.3);
-}
-
-.membro-nome {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  color: #ffffff;
-  padding: 20px 25px;
-  cursor: pointer;
-  list-style: none; /* Esconde a setinha padrão do navegador */
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  transition: color 0.3s ease, background-color 0.3s ease;
+  margin-bottom: 40px;
+  gap: 20px;
 }
 
-/* Cria um sinal de "+" super elegante no canto direito */
-.membro-nome::after {
-  content: '+';
-  font-family: 'Lato', sans-serif;
-  font-size: 1.8rem;
-  font-weight: 300;
-  color: #38752B;
-  transition: transform 0.3s ease;
+.cabecalho-galeria h2 {
+  font-family: 'Playfair Display', serif;
+  color: #ffffff;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
 }
 
-/* Esconde a seta padrão no Safari/Chrome antigo */
-.membro-nome::-webkit-details-marker {
-  display: none;
+.cabecalho-galeria h2 a.titulo-link {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-/* Estilo de quando a caixa do aluno for clicada (aberta) */
-.membro-detalhes[open] .membro-nome {
-  background-color: rgba(56, 117, 43, 0.1);
+.cabecalho-galeria h2 a.titulo-link:hover {
   color: #7ddb6a;
 }
 
-/* Transforma o "+" em "-" quando aberto */
-.membro-detalhes[open] .membro-nome::after {
-  content: '−';
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 220px);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Animação do conteúdo aparecendo */
-.membro-info {
-  padding: 0 25px 25px 25px;
-  animation: deslizarBaixo 0.4s ease;
-}
+.card-flores { grid-column: 1; grid-row: 1 / span 2; }
+.card-plantas { grid-column: 2 / span 2; grid-row: 1; }
+.card-ceu { grid-column: 2; grid-row: 2; }
+.card-animais { grid-column: 2; grid-row: 2; }
 
-@keyframes deslizarBaixo {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-
-/* Estilo dos botões do LinkedIn e GitHub */
-.membro-links {
-  display: flex;
-  gap: 15px;
-  margin-top: 25px;
-}
-
-.membro-links a {
-  color: #ffffff;
+.bento-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
   text-decoration: none;
-  font-size: 0.9rem;
-  padding: 8px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  transition: all 0.3s ease;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.membro-links a:hover {
-  background-color: #38752B;
-  border-color: #38752B;
-  color: #ffffff;
-  box-shadow: 0 4px 15px rgba(56, 117, 43, 0.4);
+.bento-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 100%);
+  transition: background 0.3s ease;
 }
-/* Responsividade Básica */
-@media (max-width: 768px) {
-  .container-sobre {
-    margin-top: 100px;
+
+.bento-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(125, 219, 106, 0.2);
+}
+
+.bento-card:hover::before {
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 100%);
+}
+
+.card-conteudo {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  width: 100%;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 8px;
+}
+
+.card-conteudo h4 {
+  font-family: 'Playfair Display', serif;
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+.card-conteudo p {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.animar-scroll {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animar-scroll.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 850px) {
+  .bloco-alternado, .bloco-alternado.reverso {
+    flex-direction: column;
   }
-  .texto-sobre h2, .equipe-sobre h2 {
-    font-size: 1.8rem;
+  .borda-esquerda, .borda-direita {
+    border-left: none;
+    border-right: none;
+    border-top: 5px solid #38752B;
   }
-  .texto-sobre p, .equipe-sobre p {
-    font-size: 1.05rem;
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .card-flores, .card-plantas, .card-ceu, .card-animais {
+    grid-column: 1;
+    grid-row: auto;
+    height: 250px;
   }
 }
