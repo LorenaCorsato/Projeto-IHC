@@ -10,16 +10,14 @@ background-color: #071510;
   padding: 15px 40px;
 }
 
-/* Área principal do conteúdo */
 .container-sobre {
   max-width: 900px;
-  margin: 140px auto 100px; /* Margem superior empurra o conteúdo para baixo do menu fixo */
+  margin: 140px auto 100px; 
   padding: 0 30px;
   color: #f5f5f5;
   font-family: 'Lato', sans-serif;
 }
 
-/* Título e Linha Decorativa */
 .cabecalho-sobre {
   text-align: center;
   margin-bottom: 60px;
@@ -32,16 +30,15 @@ background-color: #071510;
 .linha-verde-central {
   height: 6px;
   width: 120px;
-  background-color: #38752B; /* O mesmo tom de verde do botão da Home */
+  background-color: #38752B; 
   margin: 20px auto 0;
   border-radius: 4px;
 }
 
-/* Textos Explicativos */
 .texto-sobre h2, .equipe-sobre h2 {
   font-family: 'Playfair Display', serif;
   font-size: 2.2rem;
-  color: #7ddb6a; /* Verde claro brilhante */
+  color: #7ddb6a; 
   margin-bottom: 20px;
   margin-top: 50px;
 }
@@ -53,12 +50,6 @@ background-color: #071510;
   margin-bottom: 25px;
 }
 
-/* ==========================================================================
-   CARDS DOS MEMBROS DA EQUIPE
-   ========================================================================== */
-/* ==========================================================================
-   LISTA DA EQUIPE (ACORDEÃO EXPANSÍVEL)
-   ========================================================================== */
 .equipe-sobre {
   margin-top: 80px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -90,14 +81,13 @@ background-color: #071510;
   color: #ffffff;
   padding: 20px 25px;
   cursor: pointer;
-  list-style: none; /* Esconde a setinha padrão do navegador */
+  list-style: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-/* Cria um sinal de "+" super elegante no canto direito */
 .membro-nome::after {
   content: '+';
   font-family: 'Lato', sans-serif;
@@ -107,23 +97,19 @@ background-color: #071510;
   transition: transform 0.3s ease;
 }
 
-/* Esconde a seta padrão no Safari/Chrome antigo */
 .membro-nome::-webkit-details-marker {
   display: none;
 }
 
-/* Estilo de quando a caixa do aluno for clicada (aberta) */
 .membro-detalhes[open] .membro-nome {
   background-color: rgba(56, 117, 43, 0.1);
   color: #7ddb6a;
 }
 
-/* Transforma o "+" em "-" quando aberto */
 .membro-detalhes[open] .membro-nome::after {
   content: '−';
 }
 
-/* Animação do conteúdo aparecendo */
 .membro-info {
   padding: 0 25px 25px 25px;
   animation: deslizarBaixo 0.4s ease;
@@ -135,7 +121,6 @@ background-color: #071510;
 }
 
 
-/* Estilo dos botões do LinkedIn e GitHub */
 .membro-links {
   display: flex;
   gap: 15px;
@@ -158,7 +143,6 @@ background-color: #071510;
   color: #ffffff;
   box-shadow: 0 4px 15px rgba(56, 117, 43, 0.4);
 }
-/* Responsividade Básica */
 @media (max-width: 768px) {
   .container-sobre {
     margin-top: 100px;
