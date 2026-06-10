@@ -1,29 +1,58 @@
-/* Configuração Geral do Corpo da Página */
 body {
-  background-color: #000000; 
+  background-color: #071510; 
   transition: background-color 0.3s ease;
   margin: 0;
   padding: 0;
-  /* O 'overflow: hidden;' foi removido para permitir o scroll na página */
 }
 
-/* Container principal - Efeito Mural/Mosaico (Masonry) */
+.menu-topo {
+  display: flex;
+  align-items: center;
+  padding: 15px 40px; 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  right: 0;
+  z-index: 100;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: 100px;
+  background-color: rgba(0, 0, 0, 0.98); 
+  box-shadow: 0 1px 20px rgba(40, 40, 40, 0.6);
+  backdrop-filter: blur(10px); 
+}
+
+.logo { 
+  font-size: 1.5rem; 
+  margin-right: 30px; 
+}
+
+.menu-topo nav a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  margin-right: 30px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.menu-topo nav a:hover, 
+.menu-topo nav a.active { 
+  color: #7ddb6a; 
+}
+
 .gallery-container {
-  /* Define o número de colunas do mosaico */
   column-count: 3; 
-  /* Define o espaço (gap) exato entre as colunas (igual ao do telemóvel) */
   column-gap: 20px; 
   
   padding: 20px; 
   max-width: 1300px; 
   margin: 0 auto; 
-  margin-top: 20px;
-  /* Garante que os cards ficam à frente da luz de fundo */
+  margin-top: 70px;
   position: relative;
   z-index: 1; 
 }
 
-/* Responsividade: reduz o número de colunas em ecrãs mais pequenos */
 @media (max-width: 900px) {
   .gallery-container { column-count: 2; }
 }
@@ -31,7 +60,6 @@ body {
   .gallery-container { column-count: 2; }
 }
 
-/* Container do Card */
 .photo-card {
   position: relative;
   border-radius: 12px; 
@@ -42,38 +70,34 @@ body {
   margin-bottom: 24px; 
   break-inside: avoid; 
   
-  /* NOVAS LINHAS PARA A ANIMAÇÃO DE ENTRADA: */
-  opacity: 0; /* O card nasce invisível */
+  opacity: 0; 
   animation: surgirCascata 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; 
 }
 
 @keyframes surgirCascata {
   0% {
     opacity: 0;
-    transform: translateY(50px); /* Começa 50px mais para baixo */
+    transform: translateY(50px); 
   }
   100% {
     opacity: 1;
-    transform: translateY(0); /* Sobe para a posição original */
+    transform: translateY(0); 
   }
 }
 
-/* Estilização da Imagem */
 .photo-card img {
   width: 100%;  
-  height: auto; /* Permite que fotografias verticais fiquem altas e horizontais fiquem baixas */
-  display: block; /* Remove o pequeno espaço invisível que os navegadores deixam debaixo das imagens */
+  height: auto; 
+  display: block;  
   transition: transform 0.4s ease, filter 0.4s ease;
   filter: brightness(0.8); 
 }
 
-/* Efeito na Imagem ao passar o rato */
 .photo-card:hover img {
   transform: scale(1.05);
   filter: brightness(1); 
 }
 
-/* Camada de texto oculta (Overlay) */
 .photo-overlay {
   position: absolute;
   bottom: 0;
@@ -81,7 +105,7 @@ body {
   width: 100%; 
   padding: 20px;
   box-sizing: border-box; 
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9)); 
+  background: linear-gradient(transparent, rgba(0, 0.9, 0.9, 0.9)); 
   color: #f5f5f5;
   transform: translateY(100%); 
   transition: transform 0.3s ease;
@@ -93,11 +117,12 @@ body {
 
 .scientific-name {
   font-style: italic;
-  color: #a7f3d0; 
+  color: #7ddb6a; 
   margin: 5px 0; 
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.95), 
+              -1px -1px 4px rgba(0, 0, 0, 0.8);
 }
 
-/* Efeito de Lanterna / Ambilight (Mantido) */
 .lanterna-overlay {
   position: fixed;
   top: 0;
@@ -110,15 +135,11 @@ body {
   mix-blend-mode: screen; 
   z-index: 0; 
 }
-/* =========================================
-   ESTILOS DO POP-UP (MODAL) COM TRANSIÇÕES
-   ========================================= */
 
-/* Fundo escuro do Modal - Modificado para permitir animação */
 .modal {
   display: flex; 
   position: fixed;
-  z-index: 100; /* Acima de tudo */
+  z-index: 100; 
   left: 0;
   top: 0;
   width: 100%;
@@ -127,7 +148,7 @@ body {
   backdrop-filter: blur(0px);
   opacity: 0;
   visibility: hidden;
-  pointer-events: none; /* Ignora cliques quando invisível */
+  pointer-events: none; 
   align-items: center;
   justify-content: center;
   padding: 20px;
@@ -135,7 +156,6 @@ body {
   transition: opacity 0.4s ease, visibility 0.4s ease, backdrop-filter 0.4s ease;
 }
 
-/* Estado Ativo: Fade-in do fundo do Modal */
 .modal.show {
   opacity: 1;
   visibility: visible;
@@ -144,51 +164,46 @@ body {
   backdrop-filter: blur(6px);
 }
 
-/* Caixa principal - TAMANHO PADRONIZADO IGUAL PARA TODOS */
 .modal-content {
-  background-color: #000000;
+  background-color: #071510;
   border-radius: 14px;  
   width: 100%;
-  max-width: 950px; /* Largura máxima idêntica */
-  height: 80vh;      /* Altura idêntica para todos (80% da tela) */
-  max-height: 580px; /* Limite para telas muito grandes */
+  max-width: 950px; 
+  height: 80vh;     
+  max-height: 580px; 
   display: flex;
   flex-direction: column; 
   overflow: hidden;
   position: relative;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
   
-  /* EFEITO DE SURGIR (Começa menor/encolhido e invisível) */
   transform: scale(0.82);
   opacity: 0;
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
 }
 
-/* Quando o modal abre, ele expande para o tamanho normal */
 .modal.show .modal-content {
   transform: scale(1);
   opacity: 1;
 }
 
-/* Divide em duas colunas perfeitas (50% / 50%) em computadores */
 @media (min-width: 768px) {
   .modal-content {
     flex-direction: row; 
   }
 }
 
-/* Container da Imagem no Modal */
 .modal-img-container {
   width: 100%;
-  height: 45%; /* Divisão no mobile */
+  height: 45%; 
   position: relative;
   overflow: hidden;
-  z-index: 2; /* Fica acima do texto para projetar a sombra */
+  z-index: 2; 
 }
 
 @media (min-width: 768px) {
   .modal-img-container {
-    width: 50%; /* Metade exata do modal */
+    width: 50%; 
     height: 100%;
   }
 }
@@ -196,10 +211,9 @@ body {
 .modal-img-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Recorta a imagem cirurgicamente para encaixar no padrão */
+  object-fit: cover; 
 }
 
-/* TRANSIÇÃO DE SOMBRA ENTRE A FOTO E OS DADOS (MAIS FORTE) */
 .modal-img-container::after {
   content: '';
   position: absolute;
@@ -209,26 +223,22 @@ body {
   height: 100%;
   pointer-events: none;
   box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
-  transition: box-shadow 0.6s ease; /* Tempo levemente aumentado para acompanhar o tamanho da sombra */
+  transition: box-shadow 0.6s ease; 
 }
 
-/* Sombra muito mais densa e extensa */
 @media (min-width: 768px) {
   .modal.show .modal-img-container::after {
-    /* O valor -150px empurra a sombra bem mais para dentro da foto, e a opacidade foi para 1 (preto total) */
     box-shadow: inset -150px 0 120px -20px rgba(0, 0, 0, 1);
   }
   
-  /* Faz o container de texto também projetar uma sombra física por cima da imagem */
   #modal-info {
     box-shadow: -20px 0 40px rgba(0, 0, 0, 0.8);
-    z-index: 3; /* Garante que a sombra do texto fique por cima da imagem */
+    z-index: 3; 
   }
 }
 
 @media (max-width: 767px) {
   .modal.show .modal-img-container::after {
-    /* Mesmo efeito forte, mas vindo de baixo para cima no celular */
     box-shadow: inset 0 -150px 120px -20px rgba(0, 0, 0, 1);
   }
   
@@ -238,21 +248,20 @@ body {
   }
 }
 
-/* Área de texto dos Dados Técnicos */
 #modal-info {
   padding: 35px;
-  background-color: #000000;
+  background-color: #071510;
   color: #f5f5f5;
   width: 100%;
-  height: 55%; /* Divisão no mobile */
+  height: 55%; 
   box-sizing: border-box;
-  overflow-y: auto; /* Se a descrição for gigante, gera scroll só no texto */
+  overflow-y: auto; 
   z-index: 1;
 }
 
 @media (min-width: 768px) {
   #modal-info {
-    width: 50%; /* A outra metade exata */
+    width: 50%; 
     height: 100%;
   }
 }
@@ -263,7 +272,6 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* Botão de Fechar (X) */
 .close-modal {
   position: absolute;
   top: 15px;
@@ -277,13 +285,11 @@ body {
 }
 
 .close-modal:hover {
-  color: #a7f3d0;
+  color: #7ddb6a;
   transform: scale(1.1);
 }
 
-/* =========================================
-   ÍCONE DE EXPANDIR NO CARD
-   ========================================= */
+
 .expand-icon {
   position: absolute;
   top: 15px;
@@ -299,12 +305,12 @@ body {
   color: white;
   z-index: 10;
   cursor: pointer;
-  opacity: 0; /* Escondido por padrão */
+  opacity: 0;
   transition: opacity 0.3s, background-color 0.3s, transform 0.2s;
 }
 
 .photo-card:hover .expand-icon {
-  opacity: 1; /* Aparece ao passar o mouse na foto */
+  opacity: 1; 
 }
 
 .expand-icon:hover {
@@ -317,9 +323,7 @@ body {
   height: 18px;
 }
 
-/* =========================================
-   ÍCONE DE EXPANDIR DENTRO DO MODAL
-   ========================================= */
+
 .expand-icon-modal {
   position: absolute;
   top: 15px;
@@ -335,7 +339,7 @@ body {
   color: white;
   z-index: 10;
   cursor: pointer;
-  opacity: 1; /* Sempre visível dentro do modal */
+  opacity: 1; 
   transition: background-color 0.3s, transform 0.2s;
 }
 
@@ -349,23 +353,19 @@ body {
   height: 18px;
 }
 
-/* =========================================
-   ESTILOS DO POP-UP FULLSCREEN (SÓ A FOTO)
-   ========================================= */
 #fullscreen-modal {
-  z-index: 200; /* Tem que ficar acima do outro modal caso abra sem querer */
-  background-color: rgba(0, 0, 0, 0.95); /* Fundo quase 100% preto */
+  z-index: 200; 
+  background-color: rgba(0, 0, 0, 0.95); 
   backdrop-filter: blur(10px);
 }
 
 #fullscreen-img {
-  max-width: 95vw; /* 95% da largura da tela */
-  max-height: 95vh; /* 95% da altura da tela */
-  object-fit: contain; /* Garante que a foto NUNCA seja cortada */
+  max-width: 95vw; 
+  max-height: 95vh; 
+  object-fit: contain; 
   border-radius: 6px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.8);
   
-  /* Mantém a animação de "surgir" que fizemos no outro */
   transform: scale(0.82);
   opacity: 0;
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
@@ -381,7 +381,7 @@ body {
   top: 20px;
   right: 30px;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 45px; /* X um pouco maior */
+  font-size: 45px; 
   font-weight: bold;
   cursor: pointer;
   z-index: 201;
@@ -392,9 +392,7 @@ body {
   color: #fff;
   transform: scale(1.1);
 }
-/* =========================================
-   BOTÃO FLUTUANTE DE FILTRO - LIQUID GLASS (SUAVE)
-   ========================================= */
+
 .floating-btn {
   position: fixed;
   bottom: 30px;
@@ -402,45 +400,27 @@ body {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  
-  /* 1. Gradiente com branco quase imperceptível */
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.01));
-  
-  /* 2. Desfoque mais natural e saturação mais contida */
   backdrop-filter: blur(8px) saturate(120%);
   -webkit-backdrop-filter: blur(8px) saturate(120%); 
-  
-  /* 3. Iluminação das bordas muito mais sutil */
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-top-color: rgba(255, 255, 255, 0.15);
   border-left-color: rgba(255, 255, 255, 0.15);
-  
-  /* 4. Sombra externa difusa e brilho interno bem leve */
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25), inset 0 1px 3px rgba(255, 255, 255, 0.15);
-  
   color: #ffffff; 
   cursor: pointer;
   z-index: 90; 
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  /* Transição estendida para 0.5s para um movimento mais "preguiçoso" e fluido */
-  transition: all 0.5s ease; 
+    transition: all 0.5s ease; 
 }
 
-/* AO PASSAR O MOUSE (HOVER) MAIS DELICADO */
 .floating-btn:hover {
-  /* Cresce e gira um pouquinho menos */
   transform: scale(1.08) rotate(3deg); 
-  
-  /* Um branco 95% em vez de 100% chapado para não agredir os olhos */
   background: rgba(255, 255, 255, 0.95); 
   border-color: rgba(255, 255, 255, 0.5);
-  
-  /* Sombra mais espalhada e aura branca mais fraca */
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), 0 0 15px rgba(255, 255, 255, 0.2);
-  
   color: #121212; 
 }
 
@@ -450,12 +430,10 @@ body {
   transition: stroke 0.5s ease; 
 }
 
-/* =========================================
-   PAINEL DE FILTROS (PEQUENO MODAL)
-   ========================================= */
+
 .filter-panel {
   position: fixed;
-  bottom: 100px; /* Fica um pouco acima do botão flutuante */
+  bottom: 100px; 
   right: 30px;
   width: 250px;
   background-color: #1a1a1a;
@@ -465,11 +443,10 @@ body {
   z-index: 89;
   border: 1px solid rgba(255, 255, 255, 0.1);
   
-  /* Animação de surgimento */
   opacity: 0;
   visibility: hidden;
   transform: translateY(20px) scale(0.95);
-  transform-origin: bottom right; /* Anima a partir do canto inferior direito */
+  transform-origin: bottom right; 
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -506,7 +483,6 @@ body {
   color: #ffffff;
 }
 
-/* Estilo Customizado para os Checkboxes */
 .filter-options {
   display: flex;
   flex-direction: column;
@@ -526,12 +502,10 @@ body {
   color: #fff;
 }
 
-/* Esconde o checkbox padrão do navegador */
 .filter-label input {
   display: none; 
 }
 
-/* Cria a caixinha customizada */
 .custom-checkbox {
   width: 18px;
   height: 18px;
@@ -542,7 +516,6 @@ body {
   transition: all 0.2s;
 }
 
-/* Desenha o 'v' do check usando bordas quando está marcado */
 .filter-label input:checked + .custom-checkbox::after {
   content: '';
   position: absolute;
@@ -555,19 +528,16 @@ body {
   transform: rotate(45deg);
 }
 
-/* Muda a cor da caixa quando marcado */
 .filter-label input:checked + .custom-checkbox {
   background-color: #ffffff;
   border-color: #ffffff;
 }
 
-/* =========================================
-   DADOS TÉCNICOS DA FOTO NO MODAL
-   ========================================= */
+
 .exif-container {
   margin-top: 25px;
   padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Linha divisória sutil */
+  border-top: 1px solid rgba(255, 255, 255, 0.1); 
 }
 
 .exif-container ul {
@@ -576,21 +546,21 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px; /* Espaço entre as linhas de dados */
+  gap: 8px; 
 }
 
 .exif-container li {
   font-size: 0.85rem;
   color: #bbb;
-  background: rgba(255, 255, 255, 0.05); /* Fundo translúcido para cada item */
+  background: rgba(255, 255, 255, 0.05); 
   padding: 10px 14px;
   border-radius: 8px;
-  font-family: monospace; /* Fonte com estilo de código/dados */
-}
+ font-family: 'Lato', sans-serif}
 
 .exif-container li strong {
-  color: #a7f3d0; /* Usa a cor de destaque da sua galeria */
+  color: #7ddb6a; 
   font-weight: normal;
-  font-family: sans-serif;
-  margin-right: 6px;
+  font-family: 'Lato', sans-serif;
+   margin-right: 6px;
 }
+

@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfólio Ambiental - Fatec Itu</title>
-  
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-  
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -21,53 +19,42 @@
   </header>
 
   <section class="banner-principal" id="hero">
-
     <div class="container-video">
       <video autoplay loop muted playsinline class="video-fundo">
-        <source src="video/floresta4.mp4" type="video/mp4">
+        <source src="video/floresta.mp4" type="video/mp4">
       </video>
       <div class="camada-escura"></div>
     </div>
-
     <div class="caixa-texto">
       <h1 class="titulo-principal">Meio <em>Ambiente</em></h1>
       <p class="subtitulo">Dia Mundial &middot; Fatec Itu</p>
       <span class="etiqueta-data">05 de Junho</span>
     </div>
-
-<!-- <a href="galeria.html" class="link-rolar">
-      <div class="botao-rolar">
-        <span>Acessar Galeria</span>
-        <div class="seta-rolar"></div>
-      </div>
-    </a>
--->
   </section>
 
   <main class="conteudo-principal">
     
     <article class="bloco-alternado animar-scroll">
-      <div class="imagem-bloco" style="background-image: url('img/foto1.jpg');"></div>
+      <div class="imagem-bloco" style="background-image: url('img/foto15-Lyn.jpeg');"></div>
       <div class="texto-bloco borda-esquerda">
-        <h3>Titulo Titulo</h3>
-        <p>Nunc commodo accumsan eget id nisi eu nisl volutpat magna. Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisl praesent adipiscing. Integer mi sed nisl arcu aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
+       <h3>A Origem da mudança</h3>
+        <p>O Dia Mundial do Meio Ambiente, estabelecido em 5 de junho de 1972 durante a Conferência de Estocolmo, marcou um ponto de virada global nas políticas de proteção da natureza. A data não é apenas simbólica, mas um apelo à ação contínua. Através das lentes dos alunos da Fatec Itu, buscamos documentar a urgência da preservação ecológica.</p>
       </div>
     </article>
 
     <article class="bloco-alternado reverso animar-scroll">
-      <div class="imagem-bloco" style="background-image: url('img/foto2.jpg');"></div>
-      
+      <div class="imagem-bloco" style="background-image: url('img/foto20-Lo.jpg');"></div>
       <div class="texto-bloco borda-direita">
-        <h3>Titulo Titulo</h3>
-        <p>Nunc commodo accumsan eget id nisi eu nisl volutpat magna. Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisl praesent adipiscing. Integer mi sed nisl arcu aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
+       <h3>Fauna e flora locais</h3>
+        <p>A biodiversidade resiste e floresce, mesmo nos ambientes urbanos e acadêmicos. As fotografias deste portfólio exploram a riqueza das árvores nativas, dos insetos polinizadores e das plantas espontâneas que compõem a paisagem da instituição e do seu entorno. Um convite ao olhar atento sobre os detalhes que sustentam a vida.</p>
       </div>
     </article>
 
     <article class="bloco-alternado animar-scroll">
-      <div class="imagem-bloco" style="background-image: url('img/foto3.jpg');"></div>
+      <div class="imagem-bloco" style="background-image: url('img/foto7.jpg');"></div>
       <div class="texto-bloco borda-esquerda">
-        <h3>Titulo Titulo</h3>
-        <p>Nunc commodo accumsan eget id nisi eu nisl volutpat magna. Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisl praesent adipiscing. Integer mi sed nisl arcu aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
+        <h3>O Futuro em nossas mãos</h3>
+        <p>A mudança começa com atitudes diárias. Reduzir o desperdício, repensar o consumo e dar espaço para o verde crescer são passos simples que geram um impacto gigante. A responsabilidade de cuidar do planeta é compartilhada, e cada pequena ação conta na construção de um amanhã mais sustentável.</p>
       </div>
     </article>
 
@@ -75,59 +62,48 @@
 
   <section class="secao-galeria animar-scroll">
     <div class="cabecalho-galeria">
-      <h2>GALERIA</h2>
-      <div class="linha-verde"></div>
+      <h2><a href="galeria.html" class="titulo-link">GALERIA</a></h2>
     </div>
 
     <div class="bento-grid">
-      <a href="#" class="bento-card card-flores" style="background-image: url('img/teste.jpg');">
+
+      <a href="galeria.html?filtro=flor" class="bento-card card-flores" data-filter="flor" style="background-image: url('img/teste.jpg');">
         <div class="card-conteudo">
           <div class="card-header">
             <h4>Flores</h4>
-            <span class="btn-ver-mais">Ver mais</span>
           </div>
-          <p>Nunc commodo accumsan eget id nisi eu nisl volutpat magna.</p>
+          <p>Cores vibrantes que atraem polinizadores e garantem a renovação constante da vida.</p>
         </div>
       </a>
 
-      <a href="#" class="bento-card card-plantas" style="background-image: url('img/plantas.jpg');">
+      <a href="galeria.html?filtro=planta" class="bento-card card-plantas" data-filter="planta" style="background-image: url('img/plantas.jpg');">
         <div class="card-conteudo">
           <div class="card-header">
             <h4>Plantas</h4>
-            <span class="btn-ver-mais">Ver mais</span>
           </div>
-          <p>Nunc commodo accumsan eget id nisi eu nisl volutpat magna.</p>
+          <p>O pulmão verde que filtra nosso ar, regula o clima e abriga incontáveis espécies.</p>
         </div>
       </a>
 
-      <a href="#" class="bento-card card-ceu" style="background-image: url('img/ceu.jpeg');">
+      <a href="galeria.html?filtro=ceu" class="bento-card card-ceu" data-filter="ceu" style="background-image: url('img/ceu.jpeg');">
         <div class="card-conteudo">
           <div class="card-header">
             <h4>Céu</h4>
-            <span class="btn-ver-mais">Ver mais</span>
           </div>
-          <p>Nunc commodo accumsan eget id nisi eu nisl volutpat magna.</p>
+          <p>O reflexo da nossa atmosfera, um lembrete diário da importância de respirarmos ar puro.</p>
         </div>
       </a>
 
-      <a href="#" class="bento-card card-animais" style="background-image: url('img/animais.jpg');">
+      <a href="galeria.html?filtro=animal" class="bento-card card-animais" data-filter="animal" style="background-image: url('img/animais.jpg');">
         <div class="card-conteudo">
           <div class="card-header">
             <h4>Animais</h4>
-            <span class="btn-ver-mais">Ver mais</span>
           </div>
-          <p>Nunc commodo accumsan eget id nisi eu nisl volutpat magna.</p>
+          <p>A alma dos ecossistemas, cada um com uma missão vital no equilíbrio da natureza.</p>
         </div>
       </a>
     </div>
   </section>
-
-  <footer class="rodape">
-    <div class="rodape-conteudo">
-      <div class="logo-rodape">🌿</div>
-      <p>&copy; 2026 Fatec Itu - Interação Humano-Computador. Todos os direitos reservados.</p>
-    </div>
-  </footer>
 
   <script src="js/script.js"></script>
 </body>

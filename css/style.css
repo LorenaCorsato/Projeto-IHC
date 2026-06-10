@@ -1,10 +1,7 @@
-/* ==========================================================================
-   1. CONFIGURAÇÕES GERAIS E RESET
-   ========================================================================== */
-* { 
-  margin: 0; 
-  padding: 0; 
-  box-sizing: border-box; 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -13,9 +10,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ==========================================================================
-   2. MENU SUPERIOR (MENU-TOPO)
-   ========================================================================== */
 .menu-topo {
   display: flex;
   align-items: center;
@@ -24,16 +18,15 @@ body {
   top: 0; 
   left: 0; 
   right: 0;
-  z-index: 100; /* Garante que fique acima de TODAS as fotos */
-  transition: all 0.4s ease; /* Transição suave quando ganhar o fundo */
+  z-index: 100;
+  transition: all 0.4s ease;
 }
 
-/* Nova classe que o JavaScript vai adicionar ao rolar a página */
 .menu-rolagem {
-  background-color: rgba(0, 0, 0, 0.98); /* Fundo verde super escuro */
-  padding: 15px 40px; /* A barra encolhe levemente para não ocupar muito espaço */
+  background-color: rgba(0, 0, 0, 0.98);
+  padding: 15px 40px;
   box-shadow: 0 1px 20px rgba(40, 40, 40, 0.6);
-  backdrop-filter: blur(10px); /* Efeito de vidro moderno */
+  backdrop-filter: blur(10px);
 }
 
 .logo { 
@@ -56,15 +49,12 @@ body {
   color: #7ddb6a; 
 }
 
-/* ==========================================================================
-   3. BANNER PRINCIPAL (VÍDEO E MÁSCARA)
-   ========================================================================== */
 .banner-principal {
   position: relative;
   width: 100%;
   height: 100vh;
   min-height: 420px;
-  overflow: hidden; /* Corta sobras do vídeo para não criar barras de rolagem */
+  overflow: hidden;
 }
 
 .container-video {
@@ -79,7 +69,7 @@ body {
 .video-fundo {
   width: 100%; 
   height: 100%;
-  object-fit: cover; /* Faz o vídeo preencher a tela sem distorcer as proporções */
+  object-fit: cover;
   object-position: center center;
   pointer-events: none; 
 }
@@ -90,18 +80,15 @@ body {
   left: 0; 
   width: 100%; 
   height: 100%;
-  background: rgba(0, 0, 0, 0.65); /* Controla o escurecimento do vídeo */
+  background: rgba(0, 0, 0, 0.65);
   z-index: 2;
 }
 
-/* ==========================================================================
-   4. TEXTOS (CAIXA-TEXTO)
-   ========================================================================== */
 .caixa-texto {
   position: absolute;
   top: 50%; 
   left: 50%;
-  transform: translate(-50%, -55%); /* Centralização perfeita na tela */
+  transform: translate(-50%, -55%);
   text-align: center;
   pointer-events: none;
   z-index: 10;
@@ -115,7 +102,7 @@ body {
 
 .titulo-principal {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(3rem, 6vw, 4.5rem); /* Fonte responsiva de acordo com a tela */
+  font-size: clamp(3rem, 6vw, 4.5rem);
   font-weight: 700;
   color: #e8f5e2;
   text-shadow: 0 2px 30px rgba(0,0,0,0.8);
@@ -148,75 +135,47 @@ body {
   background: rgba(0,0,0,0.4);
 }
 
-/* ==========================================================================
-   5. BOTÃO DE ROLAGEM (BOTAO-ROLAR)
-   ========================================================================== */
-.link-rolar {
-  text-decoration: none;
-}
-
-.botao-rolar {
-  position: absolute;
-  bottom: 30px; 
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  z-index: 10;
-}
-
-.botao-rolar span {
-  font-size: 0.75rem;
-  color: #7ddb6a;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-}
-
-.seta-rolar {
-  width: 22px; 
-  height: 22px;
-  border-right: 2px solid #7ddb6a;
-  border-bottom: 2px solid #38752B;
-  transform: rotate(45deg);
-  animation: puloElemento 2s ease-in-out infinite;
-}
-
-@keyframes puloElemento {
-  0%, 100% { transform: rotate(45deg) translateY(0); }
-  50% { transform: rotate(45deg) translateY(8px); }
-}
-
-/* ==========================================================================
-   6. BLOCOS ALTERNADOS (SOBRE O PROJETO)
-   ========================================================================== */
 .conteudo-principal {
-  background-color: #0c0c0c; 
+  background-color: #071510; 
   padding: 0;
 }
 
 .bloco-alternado {
   display: flex;
-  height: 100vh; /* A MÁGICA AQUI: Cada bloco agora tem exatos 100% da altura da tela */
+  height: 100vh; 
   width: 100%;
+  position: relative;
 }
 
 .bloco-alternado.reverso {
   flex-direction: row-reverse;
 }
 
+.bloco-alternado::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 100%;
+  background-color: #38752B;
+  z-index: 10;
+}
+
 .imagem-bloco {
-  flex: 1; /* Ocupa 50% da largura */
+  width: 50%; 
+  flex-shrink: 0;
   background-size: cover;
   background-position: center;
-  height: 100%; /* A foto estica até o fim da tela */
+  height: 100%; 
 }
 
 .texto-bloco {
-  flex: 1; /* Ocupa os outros 50% da largura */
+  width: 50%; 
+  flex-shrink: 0;
   background-color: #050505; 
-  padding: 10%; /* Aumentei o respiro interno para ficar mais elegante em tela cheia */
+  padding: 10%; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -225,44 +184,55 @@ body {
 .texto-bloco h3 {
   font-family: 'Playfair Display', serif;
   color: #ffffff;
-  font-size: 3rem; /* Título maior para preencher melhor a tela cheia */
+  font-size: 3rem; 
   margin-bottom: 25px;
 }
 
 .texto-bloco p {
   color: rgba(255, 255, 255, 0.75);
-  font-size: 1.1rem; /* Texto levemente maior */
+  font-size: 1.1rem; 
   line-height: 1.9;
 }
 
-/* Detalhes da Linha Verde */
-.borda-esquerda { border-left: 8px solid #38752B; }
-.borda-direita { border-right: 8px solid #38752B; }
+.borda-esquerda, .borda-direita { 
+  border: none; 
+}
 
-/* Ajuste Responsivo para os slides no celular */
 @media (max-width: 850px) {
   .bloco-alternado, .bloco-alternado.reverso {
     flex-direction: column;
-    height: auto; /* Tira o limite de 100vh no celular para não espremer */
+    height: auto; 
     min-height: 100vh;
   }
+  
+  .imagem-bloco, .texto-bloco {
+    width: 100%;
+  }
+
   .imagem-bloco {
-    min-height: 50vh; /* A foto divide a tela com o texto */
+    min-height: 50vh; 
+  }
+
+  .bloco-alternado::after {
+    display: none; 
+  }
+
+  .texto-bloco {
+    border-top: 5px solid #38752B; 
   }
 }
-/* ==========================================================================
-   7. GALERIA BENTO BOX
-   ========================================================================== */
+
 .secao-galeria {
-  background-color: #0c0c0c;
+  background-color: #071510;
   padding: 80px 5% 100px;
 }
 
 .cabecalho-galeria {
   display: flex;
   align-items: center;
-  margin-bottom: 40px;
   gap: 20px;
+  max-width: 1200px; 
+  margin: 0 auto 40px auto; 
 }
 
 .cabecalho-galeria h2 {
@@ -272,15 +242,25 @@ body {
   letter-spacing: 2px;
 }
 
+.cabecalho-galeria h2 a.titulo-link {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.cabecalho-galeria h2 a.titulo-link:hover {
+  color: #7ddb6a;
+}
+
 .linha-verde {
+  margin-top: 0px;
   height: 8px;
-  background-color: #38752B; /* Tom de verde mais escuro da barra lateral */
+  background-color: #38752B;
   border-radius: 4px;
-  flex-grow: 1; /* Faz a linha preencher o resto do espaço */
+  flex-grow: 1;
   max-width: 6000px;
 }
 
-/* O Grid CSS Mágico */
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -291,11 +271,10 @@ body {
 }
 
 .card-flores { grid-column: 1; grid-row: 1 / span 2; }
-.card-plantas { grid-column: 2 / span 3; grid-row: 1; }
+.card-plantas { grid-column: 2 / span 2; grid-row: 1; }
 .card-ceu { grid-column: 2; grid-row: 2; }
 .card-animais { grid-column: 3; grid-row: 2; }
 
-/* Estilo Individual dos Cartões */
 .bento-card {
   position: relative;
   border-radius: 16px;
@@ -345,41 +324,12 @@ body {
   font-size: 1.5rem;
 }
 
-.btn-ver-mais {
-  background-color: #38752B;
-  color: white;
-  font-size: 0.65rem;
-  font-weight: bold;
-  padding: 4px 12px;
-  border-radius: 12px;
-  text-transform: uppercase;
-}
-
 .card-conteudo p {
   color: rgba(255,255,255,0.7);
   font-size: 0.8rem;
   line-height: 1.4;
 }
 
-/* ==========================================================================
-   8. RODAPÉ E ANIMAÇÕES GERAIS
-   ========================================================================== */
-.rodape {
-  background-color: #38752B; /* A barra verde final */
-  padding: 20px;
-  text-align: center;
-}
-
-.rodape-conteudo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  color: white;
-  font-size: 0.85rem;
-}
-
-/* Animações de Scroll (Classes para o JS ativar) */
 .animar-scroll {
   opacity: 0;
   transform: translateY(60px);
@@ -392,7 +342,6 @@ body {
   transform: translateY(0);
 }
 
-/* RESPONSIVIDADE PARA CELULAR */
 @media (max-width: 850px) {
   .bloco-alternado, .bloco-alternado.reverso {
     flex-direction: column;
